@@ -12,7 +12,6 @@ class Flipper extends Component {
     this.state = {
       currentFace: tails,
       isFlipping: false,
-      flipCount: 0,
       headsCount: 0,
       tailsCount: 0,
     };
@@ -25,7 +24,6 @@ class Flipper extends Component {
         currentFace: this.props.faces[Math.floor(Math.random() * 2)],
         isFlipping: true,
         //How to update a state. st is the current state object
-        flipCount: st.flipCount + 1,
         headsCount:
           st.currentFace === heads ? st.headsCount + 1 : st.headsCount,
         tailsCount:
@@ -47,9 +45,7 @@ class Flipper extends Component {
           flipping={this.state.isFlipping}
           source={this.state.currentFace}
         />
-        <p>Total flips: {this.state.flipCount}</p>
-        <p>Total heads: {this.state.headsCount}</p>
-        <p>Total tails: {this.state.tailsCount}</p>
+
         <button
           onClick={this.flip}
           disabled={this.state.isFlipping}
@@ -57,6 +53,11 @@ class Flipper extends Component {
         >
           {this.state.isFlipping ? "Flipping..." : "Flip me!"}
         </button>
+        <p>Total flips: {this.state.headsCount + this.state.tailsCount}</p>
+
+        <p>
+          {this.state.headsCount} heads - {this.state.tailsCount} tails
+        </p>
       </div>
     );
   }
