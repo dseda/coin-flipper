@@ -15,4 +15,5 @@
 .Flipper button:active,
 .Flipper button.flipping {
   box-shadow: 1px 1px 1px rgb(17, 97, 103);
+  background-color: rgb(10, 68, 72);
 }
