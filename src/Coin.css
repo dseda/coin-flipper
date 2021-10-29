@@ -4,3 +4,21 @@
   margin: 40px auto;
   max-width: 100%;
 }
+.Coin.flipping {
+  animation-name: flipper;
+  animation-duration: 1s;
+}
+@keyframes flipper {
+  from {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+  50% {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(180deg);
+  }
+  to {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(360deg);
+  }
+}

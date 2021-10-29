@@ -5,7 +5,10 @@ class Coin extends Component {
   render() {
     return (
       <div>
-        <img className="Coin" src={this.props.source} />
+        <img
+          className={`Coin ${this.props.flipping ? "flipping" : ""}`}
+          src={this.props.source}
+        />
       </div>
     );
   }

@@ -10,7 +10,9 @@
   margin: 20px auto;
   cursor: pointer;
   border-radius: 5px;
+  width: 200px;
 }
-.Flipper button:active {
-  box-shadow: 3px 3px 3px rgb(17, 97, 103);
+.Flipper button:active,
+.Flipper button.flipping {
+  box-shadow: 1px 1px 1px rgb(17, 97, 103);
 }

@@ -11,6 +11,7 @@ class Flipper extends Component {
     super(props);
     this.state = {
       currentFace: tails,
+      isFlipping: false,
     };
     this.flip = this.flip.bind(this);
   }
@@ -18,13 +19,29 @@ class Flipper extends Component {
   flip(e) {
     this.setState({
       currentFace: this.props.faces[Math.floor(Math.random() * 2)],
+      isFlipping: true,
     });
+    setTimeout(
+      () =>
+        this.setState({
+          isFlipping: false,
+        }),
+      700
+    );
   }
   render() {
     return (
       <div className="Flipper">
-        <Coin source={this.state.currentFace} />
-        <button onClick={this.flip}> Flip me!</button>
+        <Coin
+          flipping={this.state.isFlipping}
+          source={this.state.currentFace}
+        />
+        <button
+          onClick={this.flip}
+          className={this.state.isFlipping ? "flipping" : ""}
+        >
+          {this.state.isFlipping ? "Flipping..." : "Flip me!"}
+        </button>
       </div>
     );
   }
