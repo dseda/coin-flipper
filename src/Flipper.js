@@ -10,17 +10,21 @@ class Flipper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentFace: this.flip(),
+      currentFace: tails,
     };
+    this.flip = this.flip.bind(this);
   }
 
-  flip() {
-    return this.props.faces[Math.floor(Math.random() * 2)];
+  flip(e) {
+    this.setState({
+      currentFace: this.props.faces[Math.floor(Math.random() * 2)],
+    });
   }
   render() {
     return (
-      <div>
+      <div className="Flipper">
         <Coin source={this.state.currentFace} />
+        <button onClick={this.flip}> Flip me!</button>
       </div>
     );
   }
