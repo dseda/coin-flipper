@@ -5,12 +5,12 @@ import heads from "./heads.png";
 import tails from "./tails.png";
 class Flipper extends Component {
   static defaultProps = {
-    faces: [tails, heads],
+    faces: ["tails", "heads"],
   };
   constructor(props) {
     super(props);
     this.state = {
-      currentFace: tails,
+      currentFace: "tails",
       isFlipping: false,
       headsCount: 0,
       tailsCount: 0,
@@ -19,21 +19,22 @@ class Flipper extends Component {
   }
 
   flip(e) {
+    const face = this.props.faces[Math.floor(Math.random() * 2)];
     this.setState((st) => {
       return {
-        currentFace: this.props.faces[Math.floor(Math.random() * 2)],
         isFlipping: true,
-        //How to update a state. st is the current state object
-        headsCount:
-          st.currentFace === heads ? st.headsCount + 1 : st.headsCount,
-        tailsCount:
-          st.currentFace === tails ? st.tailsCount + 1 : st.tailsCount,
       };
     });
     setTimeout(
       () =>
-        this.setState({
-          isFlipping: false,
+        this.setState((st) => {
+          return {
+            currentFace: face,
+            //How to update a state. st is the current state object
+            headsCount: face === "heads" ? st.headsCount + 1 : st.headsCount,
+            tailsCount: face === "tails" ? st.tailsCount + 1 : st.tailsCount,
+            isFlipping: false,
+          };
         }),
       1000
     );
@@ -43,7 +44,7 @@ class Flipper extends Component {
       <div className="Flipper">
         <Coin
           flipping={this.state.isFlipping}
-          source={this.state.currentFace}
+          source={this.state.currentFace === "tails" ? tails : heads}
         />
 
         <button
