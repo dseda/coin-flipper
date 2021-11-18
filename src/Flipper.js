@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Flipper.css";
 import Coin from "./Coin";
-import heads from "./heads.png";
-import tails from "./tails.png";
+import heads from "./images/heads.png";
+import tails from "./images/tails.png";
 class Flipper extends Component {
   static defaultProps = {
     faces: ["tails", "heads"],
@@ -25,6 +25,7 @@ class Flipper extends Component {
         isFlipping: true,
       };
     });
+    //Display the face count after flipping animation is done
     setTimeout(
       () =>
         this.setState((st) => {
